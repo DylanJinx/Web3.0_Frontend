@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "pnpx vite",
-    "build": "vite build"
+    "build": "vite build",
+     "tsc": "./node_modules/typescript/bin/tsc"
   },
   "keywords": [],
   "author": "",

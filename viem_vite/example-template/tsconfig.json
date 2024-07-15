@@ -16,5 +16,6 @@
         "noImplicitReturns": true, // 报告函数缺少返回值，函数必须在所有代码路径上显式地返回一个值，或者显式地不返回任何值（return undefined）
         "skipLibCheck": true, // 跳过库文件（`.d.ts`文件）的类型检查，提高编译速度
     },
-    "include": ["src"] // 指定需要编译的文件目录，编译器只会编译这个目录下的文件
+    "include": ["src", "vite-env.d.ts"], // 指定需要编译的文件目录，编译器只会编译这个目录下的文件
+    "exclude": ["node_modules"] // 指定需要排除的文件目录，编译器不会编译这个目录下的文件
 }
