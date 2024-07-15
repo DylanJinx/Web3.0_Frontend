@@ -32,6 +32,6 @@
 
 5. **模块热替换（HMR）**：Vite 支持模块热替换，这意味着当你更改代码时，Vite 可以只替换已更改的部分，而无需重新加载整个页面，从而提高开发效率。
 
-## `transport: http(`https://mainnet.infura.io/v3/${import.meta.env.VITE_INFURA_API_KEY}`)` env标红问题
+### `transport: http(`https://mainnet.infura.io/v3/${import.meta.env.VITE_INFURA_API_KEY}`)` env标红问题
 在 VSCode 中打开命令面板（Ctrl + Shift + P 或 Cmd + Shift + P），然后运行命令 "TypeScript: Restart TS server"。
 确保 VSCode 使用的是工作区的 TypeScript 版本。打开命令面板，运行 "TypeScript: Select TypeScript Version"，选择 "Use Workspace Version"。
