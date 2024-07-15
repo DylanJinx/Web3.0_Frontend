@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example-template</title>
+</head>
+<body>
+    <h1>template</h1>
+    <div id="app">Loading...</div>
+    <script type="module">
+        import getBlockNumber from './src/index.ts';
+        
+        async function displayBlockNumber() {
+            const output = await getBlockNumber;
+            document.querySelector('#app').innerHTML = Array.isArray(output)
+                ? output.map(x => `<div style="margin-bottom: 16px;">${x}</div>`).join('')
+                : output;
+        }
+
+        displayBlockNumber();
+    </script>
+</body>
+</html>
