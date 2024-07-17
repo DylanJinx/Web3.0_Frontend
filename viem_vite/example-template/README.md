@@ -35,3 +35,103 @@
 ### `transport: http(`https://mainnet.infura.io/v3/${import.meta.env.VITE_INFURA_API_KEY}`)` env标红问题
 在 VSCode 中打开命令面板（Ctrl + Shift + P 或 Cmd + Shift + P），然后运行命令 "TypeScript: Restart TS server"。
 确保 VSCode 使用的是工作区的 TypeScript 版本。打开命令面板，运行 "TypeScript: Select TypeScript Version"，选择 "Use Workspace Version"。
+
+## 创建项目
+根据你提供的 `package.json` 文件和项目结构，这个项目是使用 Vite 和 TypeScript 创建的，同时还包括了 `viem` 包作为依赖。下面是你可能使用的步骤来创建这个项目：
+
+### 1. 创建项目目录
+
+你可能开始于创建一个新的项目目录：
+
+```bash
+mkdir example-template
+cd example-template
+```
+
+### 2. 初始化 npm 项目
+
+在项目目录中，你可能使用了 `npm init` 或 `yarn init` 来创建一个新的 `package.json` 文件。由于项目中使用了 `pnpm`，可能使用的是：
+
+```bash
+pnpm init
+```
+
+这将生成一个基础的 `package.json` 文件。
+
+### 3. 安装依赖
+
+根据 `package.json`，你安装了 `viem`, `typescript`, 和 `vite`。由于使用 `pnpm`，安装命令可能是：
+
+```bash
+pnpm add viem
+pnpm add --save-dev typescript vite
+```
+
+### 4. 配置 TypeScript
+
+你的项目中包含 `tsconfig.json` 文件，用于配置 TypeScript 编译选项。基本的配置可能如下：
+
+```json
+{
+    "compilerOptions": { // 如何处理TypeScript代码的编译过程
+        // target: 指定编译后的javascript目标版本
+        "target": "ESNext", // ESNext 指的是最新的 ECMAScript 标准
+        "useDefineForClassFields": true, // 使用defineProperty来定义类的属性
+        "module": "ESNext", // 指定生成哪种模块系统代码
+        "lib": ["DOM", "ESNext"], // 编译过程中需要引入的库文件的列表
+        "moduleResolution": "Node", // 表示模仿 Node.js 模块解析机制
+        "strict": true, // 开启所有严格类型检查选项
+        "resolveJsonModule": true, // 允许导入 JSON 文件
+        "isolatedModules": true, // 每个文件都是独立的模块，确保每个文件可以单独编译
+        "esModuleInterop": true, // 允许在CommonJS模块中使用ES模块的导入和导出语法
+        "noEmit" : true, // 不生成编译后的文件
+        "noUnusedLocals": true, // 报告未使用的局部变量
+        "noUnusedParameters": true, // 报告未使用的函数参数
+        "noImplicitReturns": true, // 报告函数缺少返回值，函数必须在所有代码路径上显式地返回一个值，或者显式地不返回任何值（return undefined）
+        "skipLibCheck": true, // 跳过库文件（`.d.ts`文件）的类型检查，提高编译速度
+    },
+    "include": ["src", "vite-env.d.ts"], // 指定需要编译的文件目录，编译器只会编译这个目录下的文件
+    "exclude": ["node_modules"] // 指定需要排除的文件目录，编译器不会编译这个目录下的文件
+}
+```
+
+### 5. 创建 Vite 配置文件
+
+`vite.config.ts` 文件用于配置 Vite，基础配置可能是：
+
+```typescript
+// vite.config.js
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  server: {
+    port: 3000 // 可选，设置开发服务器端口
+  }
+});
+
+```
+
+### 6. 创建 HTML 和 TypeScript 入口文件
+
+你的 `index.html` 文件可能是 Vite 项目的入口点，`src/index.ts` 是 TypeScript 的入口。`index.html` 可能简单地加载了生成的 JS 文件。
+
+### 7. 配置脚本命令
+
+在 `package.json` 中，你定义了运行和构建项目的脚本：
+
+```json
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "pnpx vite",
+    "build": "vite build",
+     "tsc": "./node_modules/typescript/bin/tsc"
+  },
+```
+
+### 8. `vite.config.ts`
+```ts
+/// <reference types="vite/client" />
+```
+
+### 9. 运行项目
+`pnpm run dev`
